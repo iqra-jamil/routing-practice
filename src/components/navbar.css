@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(247, 247, 247);
+    height:100%;
+    width:100%;
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+   text-decoration: double;
+ padding:20px;
+ font-size: 50px;
+   background-color: aqua;
+   
+}
+/*NavLink renders an anchor (<a>) tag internally, so the ul li a CSS rule targets it. That's why your CSS works.*/
+
+ul li a{
+    text-decoration: none;
+  }
+.active{
+    border-bottom: 2px solid red;
+  }

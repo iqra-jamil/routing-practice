@@ -5,8 +5,15 @@ import About from "./components/About"
 import Dashboard from "./components/Dashboard"
 import Contact from './components/Contact';
 import Navbar from './components/Navbar';
+import ParamComp from './components/paramComp';
+import Courses from './components/Courses';
+import Python from './components/Python';
+import NotFound from './components/NotFound';
+//use outlet tag to go on child components
+import { Outlet } from 'react-router-dom';
 //import createBrowserRouter
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
+
 
 //create
 let router=createBrowserRouter([
@@ -30,7 +37,18 @@ let router=createBrowserRouter([
     element:<div>
        <Navbar/>
        <Dashboard/>
-    </div>
+        <Outlet/>
+      </div>,
+      //nested Routing
+   children:[
+    {path:"courses",
+      element:<Courses/>
+    }
+  ,{
+    path:"python",
+    element:<Python/>
+  }
+]
   },
   {
     path:"/contact",
@@ -38,7 +56,22 @@ let router=createBrowserRouter([
        <Navbar/>
        <Contact/>
     </div>
+  },
+  //parameters(useparams hook)
+  {
+  path:"/student/:id",
+   element:
+   <div>
+  <Navbar/>
+  <ParamComp/>
+   </div>
+  },
+  //404 page
+  {
+     path : "*",
+     element: <NotFound/>
   }
+
 ])
 function App() {
   return (
